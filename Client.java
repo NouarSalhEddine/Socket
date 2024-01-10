@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP03_SOCKET;
+package SOCKET;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author kaa aziz
+ * @author NouarSalheddine
  */
 public class Client implements Runnable {
 
@@ -34,19 +34,19 @@ public class Client implements Runnable {
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
         try {
-            // establish socket connection to server
+           
             socket = new Socket(serverAdress, port);
-            // write to socket using ObjectOutputStream
+        
             ois = new ObjectInputStream(socket.getInputStream());
             String message = (String) ois.readObject();
             System.out.println("Message: " + message);
             oos = new ObjectOutputStream(socket.getOutputStream());
             Scanner sc = new Scanner(System.in);
             oos.writeObject(sc.nextLine());
-            // read the server response message
+       
             message = (String) ois.readObject();
             System.out.println("Message: " + message);
-            // close resources
+    
             ois.close();
             oos.close();
             Thread.sleep(100);
